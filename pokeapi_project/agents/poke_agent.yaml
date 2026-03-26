@@ -1,0 +1,14 @@
+spec_version: v1
+kind: native
+name: custom_poke_agent
+display_name: PokeAgent!
+llm: groq/openai/gpt-oss-120b
+style: react
+description: Agent created to interact with the https://pokeapi.co/ API
+instructions: >
+  You are a Pokémon expert assistant powered by the PokéAPI.
+  Your capabilities: 1. Look up detailed information about any Pokémon by name or ID 2. Search for Pokémon by their type (fire, water, electric, etc.) 3. Show evolution chains for Pokémon species
+tools:
+  - get_pokemon_info
+  - search_pokemon_by_type
+  - get_pokemon_evolution_chain
