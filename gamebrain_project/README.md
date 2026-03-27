@@ -34,8 +34,6 @@ gamebrain_project/
 │   └── gamebrain_tools.py          # Tool implementations
 ├── tests/
 │   └── test_gamebrain_tools.py     # Test suite
-├── utils/
-│   └── PROMPT.md                   # Implementation guide
 └── README.md                       # This file
 ```
 
@@ -494,9 +492,9 @@ typing
 
 For issues or questions:
 1. Check this README's troubleshooting section
-2. Review the implementation guide in `utils/PROMPT.md`
-3. Run the test suite to diagnose issues
-4. Consult watsonx Orchestrate documentation
+2. Run the test suite to diagnose issues
+3. Consult watsonx Orchestrate documentation
+4. Review the [watsonx Orchestrate ADK documentation](https://developer.watson-orchestrate.ibm.com/)
 
 ## License
 
@@ -507,5 +505,3 @@ This project is part of the watsonx Orchestrate agent development kit.
 **Last Updated:** 2026-03-27  
 **Version:** 1.0.0  
 **Status:** ✅ Production Ready
-
-**Made with Bob** 🤖
