@@ -11,16 +11,28 @@ watsonx Orchestrate is IBM's platform for building and deploying AI agents that 
 ```
 watsonx_orchestrate_agents/
 ├── readme.md                          # This file
-└── pokeapi_project/                   # Example: PokéAPI Agent
+├── pokeapi_project/                   # Example: PokéAPI Agent
+│   ├── agents/
+│   │   └── poke_agent.yaml           # Agent configuration
+│   ├── tools/
+│   │   └── poke_tool.py              # Python tools for PokéAPI
+│   ├── docs/
+│   │   ├── AGENT_ARCHITECTURE.md     # Architecture guide
+│   │   ├── AGENT_YAML_REFERENCE.md   # YAML configuration reference
+│   │   └── POKEAPI_CONNECTION_GUIDE.md # Connection setup guide
+│   └── .gitignore
+└── gamebrain_project/                 # Example: GameBrain API Agent
     ├── agents/
-    │   └── poke_agent.yaml           # Agent configuration
+    │   └── gamebrain_agent.yaml      # Agent configuration
+    ├── connections/
+    │   └── gamebrain_connection.yaml # API connection config
     ├── tools/
-    │   └── poke_tool.py              # Python tools for PokéAPI
-    ├── docs/
-    │   ├── AGENT_ARCHITECTURE.md     # Architecture guide
-    │   ├── AGENT_YAML_REFERENCE.md   # YAML configuration reference
-    │   └── POKEAPI_CONNECTION_GUIDE.md # Connection setup guide
-    └── .gitignore
+    │   └── gamebrain_tools.py        # Python tools for GameBrain API
+    ├── tests/
+    │   └── test_gamebrain_tools.py   # Test suite
+    ├── utils/
+    │   └── PROMPT.md                 # Implementation guide
+    └── README.md                     # Project documentation
 ```
 
 ## 🚀 Getting Started
@@ -83,6 +95,40 @@ orchestrate agents chat poke_agent
 - [Agent Architecture Guide](pokeapi_project/docs/AGENT_ARCHITECTURE.md) - Comprehensive guide to agent components and design patterns
 - [YAML Reference](pokeapi_project/docs/AGENT_YAML_REFERENCE.md) - Complete reference for agent configuration
 - [Connection Setup Guide](pokeapi_project/docs/POKEAPI_CONNECTION_GUIDE.md) - Step-by-step guide for API connections
+
+### 2. GameBrain API Agent
+
+A production-ready agent that integrates with the [GameBrain API](https://gamebrain.co) to search and retrieve video game information.
+
+**Features:**
+- 🔍 Search for video games by title or keyword with platform filtering
+- 📋 Get comprehensive game details (ratings, platforms, screenshots, etc.)
+- 🎮 Filter games by genre (Action, RPG, Strategy, Sports, etc.)
+- 🎯 Filter games by platform (PS5, Xbox, PC, Switch, etc.)
+
+**Quick Start:**
+```bash
+cd gamebrain_project
+
+# Configure the connection (enter your API key when prompted)
+orchestrate connections configure connections/gamebrain_connection.yaml
+
+# Import tools
+orchestrate tools import -f ./tools/gamebrain_tools.py -k python --app-id gamebrain_api
+
+# Import and run the agent
+orchestrate agents import -f agents/gamebrain_agent.yaml
+orchestrate agents run gamebrain_agent
+```
+
+**Example Queries:**
+- "Search for zelda games"
+- "Find strategy games"
+- "Show me games for Nintendo Switch"
+- "Get details for game ID 64591"
+
+**Documentation:**
+- [Complete Project README](gamebrain_project/README.md) - Full setup guide, features, and troubleshooting
 
 ## 🏗️ Agent Architecture
 
@@ -275,6 +321,7 @@ For issues or questions:
 ## 🎯 Roadmap
 
 Future additions to this repository may include:
+- [x] GameBrain API agent (video game information)
 - [ ] Weather API agent
 - [ ] Database query agent
 - [ ] Multi-agent collaboration examples
